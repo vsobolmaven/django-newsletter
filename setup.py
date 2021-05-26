@@ -62,7 +62,7 @@ for index, line in enumerate(REQUIREMENTS):
 
 setup(
     name='django-newsletter',
-    version="0.9b1",
+    version="0.9b2",
     description=(
         'Django app for managing multiple mass-mailing lists with both '
         'plaintext as well as HTML templates (and pluggable WYSIWYG editors '
