@@ -177,7 +177,7 @@ def parse_csv(myfile, newsletter, ignore_errors=False):
     # Attempt to detect the dialect
     # Ref: https://bugs.python.org/issue5332
     encodedfile = io.TextIOWrapper(myfile, encoding=encoding, newline='')
-    dialect = unicodecsv.Sniffer().sniff(encodedfile.read(1024))
+    dialect = unicodecsv.Sniffer().sniff(encodedfile.readline())
 
     # Reset the file index
     myfile.seek(0)
