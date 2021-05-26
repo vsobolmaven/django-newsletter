@@ -163,7 +163,7 @@ def get_encoding(myfile):
     return encoding
 
 
-def parse_csv(myfile, newsletter, ignore_errors=False):
+def parse_csv(myfile, newsletter, ignore_errors=False, skip_first_lines=0):
     """
     Parse addresses from CSV file-object into newsletter.
 
@@ -186,6 +186,9 @@ def parse_csv(myfile, newsletter, ignore_errors=False):
                 encoding, dialect)
 
     myreader = unicodecsv.reader(myfile, dialect=dialect, encoding=encoding)
+
+    for line in range(skip_first_lines):
+        next(myreader)
 
     firstrow = next(myreader)
 
