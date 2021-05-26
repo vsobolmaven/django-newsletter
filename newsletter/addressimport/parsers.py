@@ -194,10 +194,13 @@ def parse_csv(myfile, newsletter, ignore_errors=False):
     namecol = None
     for column in firstrow:
         if "name" in column.lower() or _("name") in column.lower():
-            namecol = colnum
+            # Prefer the first column found.
+            if namecol is None:
+                namecol = colnum
 
             if "display" in column.lower() or \
                     _("display") in column.lower():
+                namecol = colnum
                 break
 
         colnum += 1
@@ -218,9 +221,15 @@ def parse_csv(myfile, newsletter, ignore_errors=False):
                 'e-mail' in column.lower() or \
                 _("e-mail") in column.lower():
 
-            mailcol = colnum
+            # Ignore some known columns which contain 'E-mail' in the name
+            # but are not actually the email columns.
+            if column not in [
+                # Gmail.
+                'E-mail 1 - Type'
+            ]:
+                mailcol = colnum
 
-            break
+                break
 
         colnum += 1
 
