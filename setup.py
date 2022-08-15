@@ -33,8 +33,9 @@ except:
 
 setup(
     name='django-newsletter',
-    use_scm_version={"version_scheme": "post-release"},
-    setup_requires=["setuptools_scm"],
+    # TOOD: does not work when installing from Github tarball.
+    # use_scm_version={"version_scheme": "post-release"},
+    # setup_requires=["setuptools_scm"],
     description=(
         'Django app for managing multiple mass-mailing lists with both '
         'plaintext as well as HTML templates (and pluggable WYSIWYG editors '
